@@ -14,7 +14,7 @@ Return k.
 Input: nums = [3,2,2,3], val = 3
 Output: 2, nums = [2,2,_,_]
 
-既然val都要再最後，那我就維護兩個指針，一個一直指著最後，直到最後這個值變成了val他才移動，另一個指針則從後面遍歷回來
+既然val都要在最後，那我就維護兩個指針，一個一直指著最後，直到最後這個值變成了val他才移動，另一個指針則從後面遍歷回來
 ```Go
 func removeElement(nums []int, val int) int {
     // 慢指針
