@@ -8,7 +8,7 @@ func stringHash(s string) int {
     return h
 }
 ```
-那實際上這個hash 只是說會算出一串數字，然後我們會取他的餘數
+實際上這個hash 只是說會算出一串數字，然後我們會取他的餘數
 ```go
 func bucketIndex(h int){
     return h % 16
@@ -38,24 +38,25 @@ m := make(map[string]int)
 ```
 基本上就是 map[<key 的型別>]<value 的型別> 這樣的宣告方式
 
+也可以直接給一個初始值
 ```go
 m := map[string]int{"foo": 1, "bar": 2}
 ```
-這樣的宣告方式，就是直接給一個初始值
 
+這樣的方式，就是直接取出map中的值
 ```go
 val := m["foo"]
 ```
-這樣的方式，就是直接取出map中的值
 
+這樣的方式，就是直接將map中的值改掉
 ```go
 m["foo"] = 3
 ```
-這樣的方式，就是直接將map中的值改掉
+
 
 
 那go 有個地方跟 cpp 蠻像的，就是判斷一個key是否存在
-納因為go有一個特性是如果key不存在他會返回0而不會像php undefind index
+因為go有一個特性是如果key不存在他會返回0而不會像php undefind index
 所以一定要注意要判斷key是否存在
 
 ```go
@@ -67,13 +68,13 @@ if ok {
 }
 ```
 
-
+Go 可以這樣直接刪除map中的值，即使key不存在也不會報panic
 ```go
 delete(m, "foo")
 ```
-Go 可以這樣直接刪除map中的值，即使key不存在也不會報panic
 
-那在php 中最常見的 foreach 陣列，這邊有一點我不是很確定的是這是不是也是靠iterator的形式來達成的，畢竟他也是一個make出來的struct
+
+在php 中最常見的 foreach 陣列，這邊有一點我不是很確定的是這是不是也是靠iterator的形式來達成的，畢竟他也是一個make出來的struct
 ```go
 for k, v := range m {
     fmt.Println(k, v)
@@ -114,3 +115,6 @@ func cloneMap[K comparable, V any](src map[K]V) map[K]V {
     return dst
 }
 ```
+
+go的 map key是無序的，有點類似python 的 set ，所以每次印出可能順序都會不同
+另外就是跟 java 的 hashmap一樣的老問題，本身是不支援concurency的 java 採用了ConcurrentHashMap 那go 是使用sync.map不過原理我還不是很確定，有空再來詳細看一下
