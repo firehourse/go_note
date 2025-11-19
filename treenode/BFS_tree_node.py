@@ -32,11 +32,34 @@ class Tree(object):
         queue = [self.root]
         while queue:
             cur_node = queue.pop(0)
-            print(cur_node.elem)
+            print(cur_node.elem, end = " ")
             if cur_node.lchild is not None:
                 queue.append(cur_node.lchild)
             if cur_node.rchild is not None:
                 queue.append(cur_node.rchild)
+    """前序"""
+    def preorder(self,node):
+        if node is None:
+            return
+        print(node.elem, end = " ")
+        self.preorder(node.lchild)
+        self.preorder(node.rchild)
+    """中序"""
+    def inorder(self,node):
+        if node is None:
+            return
+        
+        self.inorder(node.lchild)
+        print(node.elem, end = " ")
+        self.inorder(node.rchild)
+    """後序"""
+    def postorder(self,node):
+        if node is None:
+            return
+        
+        self.postorder(node.lchild)
+        self.postorder(node.rchild)
+        print(node.elem, end = " ")    
 if __name__ =="__main__":
     tree = Tree()
     tree.add(1)
@@ -45,3 +68,11 @@ if __name__ =="__main__":
     tree.add(4)
     tree.add(5)
     tree.breadth_travel()
+    print("\nPreorder Traversal:")
+    tree.preorder(tree.root)
+
+    print("\ninorder Traversal:")
+    tree.inorder(tree.root)
+
+    print("\nPostorder Traversal:")
+    tree.postorder(tree.root)

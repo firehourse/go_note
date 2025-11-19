@@ -1,5 +1,5 @@
 
-#### 遞歸的實際執行樣貌
+#### DFS 中序遞歸的實際執行樣貌
 ```
 def dfs(node):
     if node is None:
