@@ -49,3 +49,5 @@ err = iface{
 所以平常 cdp, err := DoSomething() 的 err 就需要判斷他有沒有接到東西，如果有就是有接到錯誤那你就需要去排除
 
 簡單的error處理大概就是這樣，接下來我會在下一篇講到error真正的鏈式結構，這才是他被說跟result像的地方（其實是我自己還沒吃透）
+
+如果想要深入的了解go 的error 我會建議從我的receiver篇開始 receiver -> interface -> error_chain 這樣的順序來理解
