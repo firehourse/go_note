@@ -27,7 +27,7 @@ panic3 → 被 recover →結束 unwind
 func demo() {
     defer func() {
         if r := recover(); r != nil {
-        // 當panuc 發生的時候recover就不會是nil的，就跟error interface一樣
+        // 當panic 發生的時候recover就不會是nil的，就跟error interface一樣
             fmt.Println("recovered:", r)
         }
     }()
